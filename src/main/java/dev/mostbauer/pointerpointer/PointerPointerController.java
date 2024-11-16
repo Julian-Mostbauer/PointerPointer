@@ -18,7 +18,7 @@ import java.nio.file.Paths;
 public class PointerPointerController {
 
     @GetMapping("/getPictureXY")
-    @CrossOrigin(origins = "http://localhost:63342") // Replace with your HTML page's URL
+    @CrossOrigin(origins = "http://localhost:63342") // Allow request from Frontend
     public ResponseEntity<byte[]> getPictureXY(@RequestParam(value = "xMouse") int xMouse,
                                                @RequestParam(value = "yMouse") int yMouse,
                                                @RequestParam(value = "screenWidth") int screenWidth,
@@ -39,7 +39,7 @@ public class PointerPointerController {
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.IMAGE_PNG);
             headers.setContentLength(imageBytes.length);
-
+            System.out.println("Returning image for x=" + xIdx + ", y=" + yIdx);
             return new ResponseEntity<>(imageBytes, headers, HttpStatus.OK);
         } catch (IOException e) {
             e.printStackTrace();
