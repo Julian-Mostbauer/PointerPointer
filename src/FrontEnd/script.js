@@ -1,10 +1,13 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     document.addEventListener('click', (event) => {
         if (event.button === 0) { // Check if the left mouse button was clicked
-            const xPos = event.clientX;
-            const yPos = event.clientY;
-            const screenX = window.screen.width;
-            const screenY = window.screen.height;
+            const responseDiv = document.getElementById('response');
+            const rect = responseDiv.getBoundingClientRect();
+
+            const xPos = Math.round(event.clientX - rect.left);
+            const yPos = Math.round(event.clientY - rect.top);
+            const screenX = Math.round(rect.width);
+            const screenY = Math.round(rect.height);
 
             const url = `http://localhost:8080/getPictureXY?xMouse=${xPos}&yMouse=${yPos}&screenWidth=${screenX}&screenHeight=${screenY}`;
 

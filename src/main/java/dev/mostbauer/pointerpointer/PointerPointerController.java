@@ -25,12 +25,12 @@ public class PointerPointerController {
                                                @RequestParam(value = "screenHeight") int screenHeight) {
 
 
-        final int[] indices = getIndices(xMouse, yMouse, screenWidth, screenHeight, 2, 2);
+        final int[] indices = getIndices(xMouse, yMouse, screenWidth, screenHeight, 6, 6);
         final int xIdx = indices[0];
         final int yIdx = indices[1];
 
         final String assetFolder = "/home/julian/IdeaProjects/PointerPointer/assets";
-        final String filePath = String.format("%s/panel_%d_%d.png", assetFolder, xIdx, yIdx);
+        final String filePath = String.format("%s/panel_%d_%d.jpg", assetFolder, xIdx, yIdx);
 
         try {
             Path imagePath = Paths.get(filePath);
