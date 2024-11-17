@@ -1,24 +1,20 @@
-package dev.mostbauer.pointerpointer;
+package dev.mostbauer.pointerpointer.catcher;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-@RestController
-public class PointerPointerController {
+@Service
+public class CatcherService {
 
-    @GetMapping("/getPictureXY")
-    @CrossOrigin(origins = "http://localhost:63342") // Allow request from Frontend
     public ResponseEntity<byte[]> getPictureXY(@RequestParam(value = "xMouse") int xMouse,
                                                @RequestParam(value = "yMouse") int yMouse,
                                                @RequestParam(value = "screenWidth") int screenWidth,
@@ -52,5 +48,4 @@ public class PointerPointerController {
         final int yIdx = (int) Math.floor((double) yMouse / screenHeight * yPanels);
         return new int[]{xIdx, yIdx};
     }
-
 }

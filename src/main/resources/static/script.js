@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:8080';
+const baseUrl = 'http://localhost:8080/api/v1/catcher';
 
 document.addEventListener('DOMContentLoaded', (event) => {
     const responseDiv = document.getElementById('response');
